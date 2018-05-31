@@ -1,6 +1,6 @@
 # "千寻" 搜索
 
-![search engine outline](https://github.com/yorkofyou/Chihiro/res/search_engine.png)
+![search_engine](https://github.com/yorkofyou/Chihiro/raw/master/res/search_engine.png)
 
 上图为一个搜索引擎的框架图。首先爬虫程序从特定的几个新闻网站抓取新闻数据，然后过滤网页中的图片、视频、广告等无关元素，抽取新闻的主体内容，得到结构化的xml数据。然后一方面使用内存式单遍扫描索引构建方法（SPIMI）构建倒排索引，供检索模型使用；另一方面根据向量空间模型计算两两新闻之间的余弦相似度，供推荐模块使用。最后利用概率检索模型中的BM25公式计算给定关键词下的文档相关性评分，BM25打分结合时间因素得到热度评分，根据评分给出排序结果。本实验根据此框架图构建搜索引擎项目。
 
@@ -22,7 +22,7 @@
 
 倒排索引[2]（英语：Inverted index），也常被称为反向索引、置入档案或反向档案，是一种索引方法，被用来存储在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射。它是文档检索系统中最常用的数据结构。
 
-![å¾2. åæç´¢å¼ç»æå¾](https://github.com/yorkofyou/Chihiro/res/inverted_index.png)
+![inverted_index](https://github.com/yorkofyou/Chihiro/raw/master/res/inverted_index.png)
 
 图2 倒排索引
 
@@ -32,7 +32,7 @@
 
 倒排索引构建算法使用内存式单遍扫描索引构建方法（SPIMI），其实就是依次对每篇新闻进行分词，如果出现新的词项则插入到词典中，否则将该文档的信息追加到词项对应的倒排记录表中。SPIMI的伪代码如下：
 
-![å¾3. SPIMIç®æ³ä¼ªä»£ç ](https://github.com/yorkofyou/Chihiro/res/spimi.png)
+![spimi](https://github.com/yorkofyou/Chihiro/raw/master/res/spimi.png)
 
  
 
