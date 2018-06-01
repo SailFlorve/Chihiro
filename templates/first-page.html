@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:fragment="header">
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+		<title>首页</title>
+		<!--引用css-->
+		<link rel="stylesheet" type="text/css" href="../statics/CSS/externalCSS/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../statics/CSS/externalCSS/animate.css"/>
+		<link rel="stylesheet" type="text/css" href="../statics/CSS/customCSS/categoryChoose.css"/>
+		<!--自定义css-->
+		<link rel="stylesheet" type="text/css" href="../statics/CSS/customCSS/first-page.css"/>
+
+	</head>
+	
+	<body>
+		<section class="container">
+			<div id="rowContainer" align="center">
+				<div id="diseaseDiv" class="myCol1 animated flipInY" onclick="handleClick1();">
+					<div id="disease" class="message">片名搜索</div>
+				</div>
+				
+				<div id="weatherDiv" class="myCol2 animated flipInY" onclick="handleClick2();">
+					<div id="weather" class="message">导演搜索</div>
+				</div>
+				
+				<div id="stationDiv" class="myCol3 animated flipInY" onclick="handleClick3();">
+					<div id="station" class="message">演员搜索</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!--引用js-->
+		<script type="text/javascript" src="../statics/JS/externalJS/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="../statics/JS/customJS/categoryChoose.js"></script>
+		
+	</body>
+</html>

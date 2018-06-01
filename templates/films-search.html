@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+ <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+ <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+ <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+ <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>片名搜索</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 引用css -->
+        <link rel="stylesheet" type="text/css" href="../statics/CSS/externalCSS/buttons.css"/>
+        <!-- 自定义css -->
+        <link rel="stylesheet" type="text/css" href="../statics/CSS/customCSS/filmsSearch.css" />
+     </head>
+     <body>
+         <!--[if lt IE 7]>
+             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+         <![endif]-->
+         <section id="searchpart">
+             <div class="searchtype">
+                 <form>
+                    <input id="filmnameSearch" type="text" name="filename" placeholder="请输入想要查询的片名：" autocomplete="off" />
+                    <br/><br/>
+                    <input type="radio" checked="checked" name="nametype" value="allname"/>片名搜索:
+                    <input type="radio" name="nametype" value="partname" />模糊搜索：
+                 </form>
+             </div>
+         </section>
+         <section class="clickbutton">
+             <button id="research" type="submit" class="button button-rounded button-tiny button-glow button-rounded button-raised button-primary">查询</button>
+         </section>
+         <section id="showPart" class="showPartType">
+            <div id="picture" class="pictureType">
+                <img id="showpicture"/>
+            </div>
+            <div id="information" class="informationType">
+                <p id="filmname" class="filmname"></p>
+                <p>
+                    <span>又名：</span>
+                    <span id="elsename"></span>
+                </p>
+                <p>
+                    <span>导演：</span>
+                    <span id="director"></span>
+                </p>
+                <p>
+                    <span>主演：</span>
+                    <span id="actor"></span>    
+                </p>
+                <p>
+                    <span>类型：</span>
+                    <span id="filmtype"></span>
+                </p>
+                <p>
+                    <span>制片国家/地区：</span>
+                    <span id="country"></span>
+                </p>
+                <p>
+                    <span>语言：</span>
+                    <span id="language"></span>
+                </p>
+                <p>
+                    <span>上映日期：</span>
+                    <span id="releasedate"></span>
+                </p>
+                <p>
+                    <span>片长：</span>
+                    <span id="time"></span>
+                </p>
+            </div>
+         </section>
+
+         <section id="searchInformationPart" class="searchInformationPartType">
+            
+         </section>
+         
+         <!-- <section id="a"></section>
+         <section id="b"></section> -->
+         
+         <!-- 引用js -->
+         <script type="text/javascript" src="../statics/JS/externalJS/jquery.min.js"></script>
+         <script type="text/javascript" src="../statics/JS/externalJS/jquery-3.2.1.js"></script>
+         <!-- 自定义js -->
+         <script type="text/javascript" src="../statics/JS/customJS/filmsSearch.js"></script>
+     </body>
+ </html>

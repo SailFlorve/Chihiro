@@ -1,0 +1,112 @@
+body
+{
+    background-color:#E8FFF5;
+}
+.searchtype
+{
+    margin-top: 20px;
+    margin-left: 50px;
+    width: 200px;
+    height: 30px;
+}
+#filmnameSearch
+{
+    color:#333;
+    line-height:normal;
+    font-family:"Microsoft YaHei",Tahoma,Verdana,SimSun;
+    font-style:normal;
+    font-variant:normal;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-weight:normal;
+    margin-top:0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    padding-top:4px;
+    padding-right:4px;
+    padding-bottom:4px;
+    padding-left:4px;
+    font-size:15px;
+    outline-width:medium;
+    outline-style:none;
+    outline-color:invert;
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    border-bottom-left-radius:3px;
+    border-bottom-right-radius:3px;
+    text-shadow:0px 1px 2px #fff;
+    background-attachment:scroll;
+    background-repeat:repeat-x;
+    background-position-x:left;
+    background-position-y:top;
+    background-size:auto;
+    background-origin:padding-box;
+    background-clip:border-box;
+    background-color:rgb(255,255,255);
+    margin-right:8px;
+    border-top-color:#ccc;
+    border-right-color:#ccc;
+    border-bottom-color:#ccc;
+    border-left-color:#ccc;
+    border-top-width:1px;
+    border-right-width:1px;
+    border-bottom-width:1px;
+    border-left-width:1px;
+    border-top-style:solid;
+    border-right-style:solid;
+    border-bottom-style:solid;
+    border-left-style:solid;
+}
+#filmnameSearch:focus
+{
+    border: 1px solid #fafafa;
+    -webkit-box-shadow: 0px 0px 6px #007eff;
+     -moz-box-shadow: 0px 0px 5px #007eff;
+     box-shadow: 0px 0px 5px #007eff;   
+    
+}
+.clickbutton
+{
+    position: relative;
+    top: -27px;
+    left: 250px;
+}
+.showPartType
+{
+    position: absolute;
+    right: 100px;
+    top: 20px;
+    width: 500px;
+    height: 600px;
+    border: 1px solid #A0A0A0;
+    border-radius: 8px;
+}
+.pictureType
+{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    width: 270px;
+    height: 385px;  
+}
+.informationType
+{
+    position: absolute;
+    left: 20px;
+    top: -15px;
+    width: 170px;
+    height: 500px;
+}
+.directorname
+{
+    font-size: 25px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.searchInformationPartType
+{
+    position: absolute;
+    left: 50px;
+    top: 120px;
+    width: 530px;
+    height: 500px;
+}
