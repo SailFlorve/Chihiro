@@ -95,7 +95,7 @@ class SearchEngine:
     def searchidlist(self, key):
         global page
         global doc_id
-        se = SearchEngine('../config.ini', 'utf-8')
+        se = SearchEngine('statics/config.ini', 'utf-8')
         flag, id_scores = se.search(key)
         # 返回docid列表
         doc_id = [i for i, s in id_scores]
@@ -106,6 +106,6 @@ class SearchEngine:
 
 
 if __name__ == "__main__":
-    se = SearchEngine('../config.ini', 'utf-8')
+    se = SearchEngine('statics/config.ini', 'utf-8')
     # flag, rs = se.search('北京雾霾', 0)
     # print(rs[:10])

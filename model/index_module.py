@@ -10,21 +10,19 @@ import jieba
 
 class Doc:
     doc_id = 0
-    date_time = ''
     tf = 0
     ld = 0
 
-    def __init__(self, doc_id, date_time, tf, ld):
+    def __init__(self, doc_id, tf, ld):
         self.doc_id = doc_id
-        self.date_time = date_time
         self.tf = tf
         self.ld = ld
 
     def __repr__(self):
-        return str(self.doc_id) + '\t' + self.date_time + '\t' + str(self.tf) + '\t' + str(self.ld)
+        return str(self.doc_id) + '\t' + str(self.tf) + '\t' + str(self.ld)
 
     def __str__(self):
-        return str(self.doc_id) + '\t' + self.date_time + '\t' + str(self.tf) + '\t' + str(self.ld)
+        return str(self.doc_id) + '\t' + str(self.tf) + '\t' + str(self.ld)
 
 
 class IndexModule:
@@ -87,12 +85,11 @@ class IndexModule:
             title = root.find('title').text
             body = root.find('body').text
             doc_id = int(root.find('id').text)
-            date_time = root.find('datetime').text
             seg_list = jieba.lcut(title + '。' + body, cut_all=False)
             ld, cleaned_dict = self.clean_list(seg_list)
             avg_l = avg_l + ld
             for key, value in cleaned_dict.items():
-                d = Doc(doc_id, date_time, value, ld)
+                d = Doc(doc_id, value, ld)
                 if key in self.postings_lists:
                     self.postings_lists[key][0] = self.postings_lists[key][0] + 1  # df++
                     self.postings_lists[key][1].append(d)
@@ -107,5 +104,5 @@ class IndexModule:
 
 
 if __name__ == '__main__':
-    im = IndexModule('../config.ini', 'utf-8')
+    im = IndexModule('statics/config.ini', 'utf-8')
     im.construct_postings_lists()
