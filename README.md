@@ -14,7 +14,7 @@
 
 大型网站几乎都有反爬虫策略，通常具有以下防反爬方法：设置随机User Agent、设置爬取间隔时间、带可用Cookie和使用代理。
 
-在Python3环境下，这里使用了BeatifulSoup4来对网页进行解析。
+在Python 3环境下，这里使用了BeatifulSoup4来对网页进行解析。
 
  
 

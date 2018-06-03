@@ -1,68 +1,76 @@
 # -*-coding:utf-8 -*-
-from django.shortcuts import render
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
 import json
-from model.search_engine import *
+
+from django.http import JsonResponse
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+
 from model.index_module import *
-import xml.etree.ElementTree as ET
+from model.search_engine import *
+
 
 def hello(request):
     context = {}
     context['hello'] = 'Hello World!!!'
     return render(request, 'hello.html', context)
+
+
 def welcome(request):
     context = {}
     buildDB()
     return render(request, 'first-page.html', context)
 
+
 def toFilmNameSearch(request):
     context = {}
-    return render(request,'films-search.html',context)
+    return render(request,'films-search.html', context)
+
+
 def toDirectorNameSearch(request):
     context = {}
-    return render(request,'director-search.html',context)
+    return render(request,'director-search.html', context)
+
+
 def toActorNameSearch(request):
     context = {}
-    return render(request,'actor-search.html',context)
+    return render(request, 'actor-search.html', context)
 
 
 @csrf_exempt
 def test(request):
     softData = request.POST.get('softData')
-    print("softData is ",softData)
+    print("softData is ", softData)
 
     #jsonData 是一个字典（dict类型的变量）
     jsonData={
-        'message':"testdata",
-        'data':"杭电",
+        'message': "testdata",
+        'data': "杭电",
     }
-    return JsonResponse(json.dumps(jsonData),safe=False)
+    return JsonResponse(json.dumps(jsonData), safe=False)
 
 
 @csrf_exempt
 def filmNameSearch(request):
     filmName = request.POST.get('filmName')
-    print("filmName is ",filmName)
+    print("filmName is ", filmName)
     engine = SearchEngine('statics/config.ini', 'utf-8')
-    flag,id_scores = engine.search(filmName)
+    flag, id_scores = engine.search(filmName)
     if flag == 0:
         data = {
-            'state':False,
-            'message':"No relevant data"
+            'state': False,
+            'message': "No relevant data"
         }
         print(data)
-        return JsonResponse(json.dumps(data),safe=False)
+        return JsonResponse(json.dumps(data), safe=False)
     else:
         doc_ids = [i for i, s in id_scores]
         docs = find(doc_ids)
         data = {
-            'state':True,
-            'data':docs
+            'state': True,
+            'data': docs
         }
         print(data)
-        return JsonResponse(json.dumps(data),safe=False)
+        return JsonResponse(json.dumps(data), safe=False)
 
 
 def find(docid):
@@ -79,6 +87,7 @@ def find(docid):
                'img': img, 'id': id}
         docs.append(doc)
     return docs
+
 
 def buildDB():
     db = IndexModule('statics/config.ini', 'utf-8')

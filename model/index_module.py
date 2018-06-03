@@ -85,7 +85,10 @@ class IndexModule:
             title = root.find('title').text
             body = root.find('body').text
             doc_id = int(root.find('id').text)
+            directors = root.find('directors').text
+            actors = root.find('actors').text
             seg_list = jieba.lcut(title + '。' + body, cut_all=False)
+            seg_list.append(directors, actors)
             ld, cleaned_dict = self.clean_list(seg_list)
             avg_l = avg_l + ld
             for key, value in cleaned_dict.items():
