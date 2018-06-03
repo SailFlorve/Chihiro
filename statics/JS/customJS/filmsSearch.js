@@ -16,8 +16,8 @@ $("#time").text("106分钟");
 
 
 $("#research").click(function(){
-    searchvalue = $("#filmnameSearch").value;
-    //getshowdata(searchvalue);
+    searchvalue = $("#filmnameSearch").val();
+    getshowdata(searchvalue);
     //getinformation(searchvalue);
     $("#showPart").show();
     $("#searchInformationPart").show();
@@ -26,7 +26,7 @@ $("#research").click(function(){
 function getshowdata(searchvalue)
 {
     $.ajax({
-        type:"post",
+        type:"get",
         url:"/filmNameSearch",
         dataType:"json",
         data:{

@@ -17,7 +17,7 @@ def hello(request):
 
 def welcome(request):
     context = {}
-    buildDB()
+    #buildDB()
     return render(request, 'first-page.html', context)
 
 
@@ -51,8 +51,15 @@ def test(request):
 
 @csrf_exempt
 def filmNameSearch(request):
-    filmName = request.POST.get('filmName')
+    filmName = request.GET.get('filmName')
     print("filmName is ", filmName)
+    if filmName == None:
+        data = {
+            'state':False,
+            'message':"fail to recieve parameter"
+        }
+        print(data)
+        return JsonResponse(json.dumps(data),safe=False)
     engine = SearchEngine('statics/config.ini', 'utf-8')
     flag, id_scores = engine.search(filmName)
     if flag == 0:
