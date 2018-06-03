@@ -26,9 +26,12 @@ $("#research").click(function(){
 function getshowdata(searchvalue)
 {
     $.ajax({
-        type:"get",
-        url:searchurl,
+        type:"post",
+        url:"/filmNameSearch",
         dataType:"json",
+        data:{
+            filmName:searchvalue
+        },
         success:function(data){
             alert("data");
         },

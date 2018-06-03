@@ -73,7 +73,8 @@ class SearchEngine:
             w = math.log2((self.N - df + 0.5) / (df + 0.5))
             docs = r[2].split('\n')
             for doc in docs:
-                docid, date_time, tf, ld = doc.split('\t')
+                print("doc is ",doc)
+                docid, tf, ld = doc.split('\t')
                 docid = int(docid)
                 tf = int(tf)
                 ld = int(ld)
