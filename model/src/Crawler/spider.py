@@ -51,10 +51,10 @@ def crawl_movies(doc_dir_path, doc_encoding):
             soup_detail = BeautifulSoup(html_detail, 'lxml')
             body = soup_detail.find('span', class_='dra').string
             directors = list()
-            for s in soup_detail.find_all('div', class_='info'):
-                directors.append(str(s.find('a').string).strip())
+            for s in soup_detail.find('div', class_='tab-desc tab-content active').find_all('li', class_='celebrity '):
+                directors.append(str(s.find('div', class_='info').find('a').string).strip())
             actors = list()
-            for s in soup_detail.find_all('li', class_='celebrity actor'):
+            for s in soup_detail.find('div', class_='tab-desc tab-content active').find_all('li', class_='celebrity actor'):
                 actors.append(str(s.find('div', class_='info').find('a').string).strip())
             ET.SubElement(doc, "body").text = body
             ET.SubElement(doc, "director").text = '.'.join(directors)
