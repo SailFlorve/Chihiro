@@ -4,8 +4,12 @@
     <bookmark url="file://$PROJECT_DIR$/README.md" line="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ceb6b43c-ca08-4394-8ada-0933e1c85d96" name="Default" comment="">
+    <list default="true" id="ceb6b43c-ca08-4394-8ada-0933e1c85d96" name="Default" comment="Add director and actors">
+      <change beforePath="$PROJECT_DIR$/.idea/Chihiro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Chihiro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/Respond/respond.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Respond/respond.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statics/JS/customJS/filmsSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/statics/JS/customJS/filmsSearch.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,17 +46,8 @@
       <file leaf-file-name="index_module.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/index_module.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="78" column="21" lean-forward="true" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search_engine.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/search_engine.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="103" column="40" lean-forward="true" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
+            <state relative-caret-position="2190">
+              <caret line="78" column="21" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
               <folding>
                 <element signature="e#25#44#0" expanded="true" />
               </folding>
@@ -60,30 +55,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spider.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/model/src/Crawler/spider.py">
+      <file leaf-file-name="search_engine.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/search_engine.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+            <state relative-caret-position="2940">
+              <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
+              <folding>
+                <element signature="e#25#44#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/src/Respond/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/src/DB/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/src/Crawler/__init__.py">
+      <file leaf-file-name="spider.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/src/Crawler/spider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="7" selection-start-column="7" selection-end-column="7" />
+            <state relative-caret-position="190">
+              <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
+              <folding>
+                <element signature="e#25#44#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,8 +82,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Chihiro/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="271">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#631#663#0" expanded="true" />
               </folding>
@@ -100,20 +91,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
+      <file leaf-file-name="respond.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/model/src/Respond/respond.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
+            <state relative-caret-position="-210">
+              <caret line="60" column="19" lean-forward="true" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="respond.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/src/Respond/respond.py">
+      <file leaf-file-name="filmsSearch.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/statics/JS/customJS/filmsSearch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="135">
+              <caret line="17" column="29" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -174,10 +165,10 @@
         <option value="$PROJECT_DIR$/Chihiro/urls.py" />
         <option value="$PROJECT_DIR$/statics/config.ini" />
         <option value="$PROJECT_DIR$/model/search_engine.py" />
+        <option value="$PROJECT_DIR$/model/src/Crawler/spider.py" />
+        <option value="$PROJECT_DIR$/model/index_module.py" />
         <option value="$PROJECT_DIR$/statics/JS/customJS/filmsSearch.js" />
         <option value="$PROJECT_DIR$/model/src/Respond/respond.py" />
-        <option value="$PROJECT_DIR$/model/index_module.py" />
-        <option value="$PROJECT_DIR$/model/src/Crawler/spider.py" />
       </list>
     </option>
   </component>
@@ -268,12 +259,6 @@
             <path>
               <item name="Chihiro" type="b2602c69:ProjectViewProjectNode" />
               <item name="Chihiro" type="462c0819:PsiDirectoryNode" />
-              <item name="statics" type="462c0819:PsiDirectoryNode" />
-              <item name="movies" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Chihiro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Chihiro" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -286,7 +271,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SearchEverywhereHistoryKey" value="datetime&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../news-search-engine" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Project/Chihiro" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -365,21 +350,7 @@
       <option name="project" value="LOCAL" />
       <updated>1527780004360</updated>
     </task>
-    <task id="LOCAL-00003" summary="Add director and actors.">
-      <created>1528026287967</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1528026287967</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Add directors and actors.">
-      <created>1528026300769</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1528026300769</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -392,16 +363,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="12" weight="0.32843137" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" weight="0.32843137" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="3" visible="true" weight="0.32461873" />
+      <window_info anchor="bottom" id="Version Control" order="3" weight="0.32461873" />
       <window_info anchor="bottom" id="Python Console" order="2" weight="0.32843137" />
       <window_info anchor="bottom" id="Run" order="8" weight="0.3267974" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.251634" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.498366" visible="true" weight="0.20202559" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="4" visible="true" weight="0.37254903" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.498366" visible="true" weight="0.20499243" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="2" weight="0.32995737" />
       <window_info anchor="right" id="SciView" order="0" weight="0.32995737" />
@@ -455,12 +427,34 @@
     </ignored-roots>
     <MESSAGE value="Add some codes." />
     <MESSAGE value="Fix a bug." />
-    <MESSAGE value="Add director and actors." />
-    <MESSAGE value="Add directors and actors." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add directors and actors." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix a bug." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1500">
+          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/src/Respond/respond.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/src/Crawler/spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1410">
+          <caret line="51" column="64" lean-forward="true" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="64" />
+          <folding>
+            <element signature="e#25#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/index_module.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2184">
@@ -681,33 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/statics/JS/customJS/filmsSearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Chihiro/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#631#663#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/statics/JS/customJS/actorSearch.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/src/Crawler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -715,23 +682,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/src/Respond/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/src/DB/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/src/Respond/respond.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/search_engine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="103" column="40" lean-forward="true" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
+        <state relative-caret-position="2940">
+          <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
           <folding>
             <element signature="e#25#44#0" expanded="true" />
           </folding>
@@ -740,15 +694,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/index_module.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="78" column="21" lean-forward="true" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
+        <state relative-caret-position="2190">
+          <caret line="78" column="21" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
+          <folding>
+            <element signature="e#25#44#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/src/Crawler/spider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+        <state relative-caret-position="190">
+          <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
+          <folding>
+            <element signature="e#25#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statics/JS/customJS/filmsSearch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Chihiro/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#631#663#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/src/Respond/respond.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-210">
+          <caret line="60" column="19" lean-forward="true" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
         </state>
       </provider>
     </entry>
