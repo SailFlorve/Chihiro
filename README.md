@@ -14,7 +14,7 @@
 
 大型网站几乎都有反爬虫策略，通常具有以下防反爬方法：设置随机User Agent、设置爬取间隔时间、带可用Cookie和使用代理。
 
-在Python 3环境下，这里使用了BeatifulSoup4来对网页进行解析。
+在Python 3环境下，这里使用了Beautiful Soup 4来对网页进行解析。
 
  
 
@@ -51,5 +51,8 @@
 [2] 倒排索引 – 维基百科，自由的百科全书
 
 https://zh.wikipedia.org/wiki/%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95
+
+
+* 图片来源于网络
 
  

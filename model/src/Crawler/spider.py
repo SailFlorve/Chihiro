@@ -22,10 +22,10 @@ user_agent_list = [
         'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; MS-RTC LM 8)',
     ]
 
+
 def crawl_movies(doc_dir_path, doc_encoding):
     path = 'https://maoyan.com'
-    j = 1
-    for i in range(27318):
+    for i in range(0, 27318):
         try:
             headers = {'User-Agent': random.choice(user_agent_list),
                        'Cookie': 'uuid=1A6E888B4A4B29B16FBA1299108DBE9CE4B584628BAA0D9413EC30D0C831E00D;'
@@ -43,6 +43,7 @@ def crawl_movies(doc_dir_path, doc_encoding):
         except Exception as e:
             print('----%s:%s----' % e, 'https://maoyan.com/films?offset=' + str(30*i))
             return
+        j = i * 30
         html = response.read().decode('utf-8')
         soup = BeautifulSoup(html, 'lxml')
         items = soup.find('dl', class_='movie-list').find_all('dd')
