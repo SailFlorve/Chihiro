@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import configparser
-import sqlite3
-import xml.etree.ElementTree as ET
+import json
 from os import listdir
 
 import jieba
+import pymongo
 
 
 class Doc:
@@ -53,6 +53,8 @@ class IndexModule:
         cleaned_dict = {}
         n = 0
         for i in seg_list:
+            if not i:
+                continue
             i = i.strip().lower()
             if i != '' and not self.is_number(i) and i not in self.stop_words:
                 n = n + 1
@@ -62,18 +64,13 @@ class IndexModule:
                     cleaned_dict[i] = 1
         return n, cleaned_dict
 
-    def write_postings_to_db(self, db_path):
-        conn = sqlite3.connect(db_path)
-        c = conn.cursor()
-        c.execute('''DROP TABLE IF EXISTS postings''')
-        c.execute('''CREATE TABLE postings
-                     (term TEXT PRIMARY KEY, df INTEGER, docs TEXT)''')
-        for key, value in self.postings_lists.items():
-            doc_list = '\n'.join(map(str, value[1]))
-            t = (key, value[0], doc_list)
-            c.execute("INSERT INTO postings VALUES (?, ?, ?)", t)
-        conn.commit()
-        conn.close()
+    def save_postings_to_db(self):
+        config = configparser.ConfigParser()
+        config.read(self.config_path, self.config_encoding)
+        connection = pymongo.MongoClient(config['DEFAULT']['host'], int(config['DEFAULT']['port']))
+        db_name = config['DEFAULT']['DBName']
+        db = connection[db_name]
+        db['movie'].insert(self.postings_lists, check_keys=False)
 
     def construct_postings_lists(self):
         config = configparser.ConfigParser()
@@ -81,30 +78,39 @@ class IndexModule:
         files = listdir(config['DEFAULT']['doc_dir_path'])
         avg_l = 0
         for i in files:
-            root = ET.parse(config['DEFAULT']['doc_dir_path'] + i).getroot()
-            title = root.find('title').text
-            body = root.find('body').text
-            doc_id = int(root.find('id').text)
-            directors = root.find('directors').text
-            actors = root.find('actors').text
-            seg_list = jieba.lcut(title + '。' + body, cut_all=False)
-            seg_list.append(directors)
-            seg_list.append(actors)
-            ld, cleaned_dict = self.clean_list(seg_list)
-            avg_l = avg_l + ld
-            for key, value in cleaned_dict.items():
-                d = Doc(doc_id, value, ld)
-                if key in self.postings_lists:
-                    self.postings_lists[key][0] = self.postings_lists[key][0] + 1  # df++
-                    self.postings_lists[key][1].append(d)
-                else:
-                    self.postings_lists[key] = [1, [d]]  # [df, [Doc]]
+            with open(config['DEFAULT']['doc_dir_path'] + i, 'r', encoding='utf-8') as f:
+                root = json.load(f)
+                doc_id = int(root['id'])
+                title = root['title']
+                ename = root['ename']
+                types = root['types']
+                body = root['body']
+                directors = root['directors']
+                actors = root['actors']
+                seg_list = jieba.lcut(title + '.' + body, cut_all=False)
+                seg_list.append(ename)
+                seg_list.append(types)
+                seg_list.append(directors)
+                seg_list.append(actors)
+                ld, cleaned_dict = self.clean_list(seg_list)
+                avg_l = avg_l + ld
+                for key, value in cleaned_dict.items():
+                    d = dict()
+                    d['doc_id'] = doc_id
+                    d['tf'] = value
+                    d['ld'] = ld
+                    if key in self.postings_lists:
+                        self.postings_lists[key]['df'] += 1
+                    else:
+                        self.postings_lists[key] = {}
+                        self.postings_lists[key]['df'] = 1
+                    self.postings_lists[key]['doc'] = d
         avg_l = avg_l / len(files)
         config.set('DEFAULT', 'N', str(len(files)))
         config.set('DEFAULT', 'avg_l', str(avg_l))
         with open(self.config_path, 'w', encoding=self.config_encoding) as configfile:
             config.write(configfile)
-        self.write_postings_to_db(config['DEFAULT']['db_path'])
+        self.save_postings_to_db()
 
 
 if __name__ == '__main__':

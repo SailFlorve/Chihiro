@@ -3,9 +3,9 @@
 import configparser
 import math
 import operator
-import sqlite3
 
 import jieba
+import pymongo
 
 
 class SearchEngine:
@@ -26,7 +26,9 @@ class SearchEngine:
         f = open(config['DEFAULT']['stop_words_path'], encoding=config['DEFAULT']['stop_words_encoding'])
         words = f.read()
         self.stop_words = set(words.split('\n'))
-        self.conn = sqlite3.connect(config['DEFAULT']['db_path'])
+        self.conn = pymongo.MongoClient(config.get('DB', 'host'), int(config.get('DB', 'port')))
+        db_name = config.get('DB', 'DBName')
+        self.db = self.conn[db_name]
         self.K1 = float(config['DEFAULT']['k1'])
         self.B = float(config['DEFAULT']['b'])
         self.N = int(config['DEFAULT']['n'])
@@ -57,9 +59,7 @@ class SearchEngine:
         return n, cleaned_dict
 
     def fetch_from_db(self, term):
-        c = self.conn.cursor()
-        c.execute('SELECT * FROM postings WHERE term=?', (term,))
-        return c.fetchone()
+        return self.db['movie'].find(term)
 
     def result_by_BM25(self, sentence):
         seg_list = jieba.lcut(sentence, cut_all=False)
@@ -69,20 +69,17 @@ class SearchEngine:
             r = self.fetch_from_db(term)
             if r is None:
                 continue
-            df = r[1]
+            df = r['df']
             w = math.log2((self.N - df + 0.5) / (df + 0.5))
-            docs = r[2].split('\n')
-            for doc in docs:
-                print("doc is ",doc)
-                docid, tf, ld = doc.split('\t')
-                docid = int(docid)
-                tf = int(tf)
-                ld = int(ld)
-                s = (self.K1 * tf * w) / (tf + self.K1 * (1 - self.B + self.B * ld / self.AVG_L))
-                if docid in BM25_scores:
-                    BM25_scores[docid] = BM25_scores[docid] + s
-                else:
-                    BM25_scores[docid] = s
+            doc = r['doc']
+            tf = doc['tf']
+            ld = doc['ld']
+            docid = doc['doc_id']
+            s = (self.K1 * tf * w) / (tf + self.K1 * (1 - self.B + self.B * ld / self.AVG_L))
+            if docid in BM25_scores:
+                BM25_scores[docid] = BM25_scores[docid] + s
+            else:
+                BM25_scores[docid] = s
         BM25_scores = sorted(BM25_scores.items(), key=operator.itemgetter(1))
         BM25_scores.reverse()
         if len(BM25_scores) == 0:
@@ -108,5 +105,3 @@ class SearchEngine:
 
 if __name__ == "__main__":
     se = SearchEngine('statics/config.ini', 'utf-8')
-    # flag, rs = se.search('北京雾霾', 0)
-    # print(rs[:10])

@@ -1,5 +1,4 @@
 # -*-coding:utf-8 -*-
-import json
 
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -42,7 +41,7 @@ def test(request):
     print("softData is ", softData)
 
     #jsonData 是一个字典（dict类型的变量）
-    jsonData={
+    jsonData = {
         'message': "testdata",
         'data': "杭电",
     }
@@ -51,17 +50,17 @@ def test(request):
 
 @csrf_exempt
 def filmNameSearch(request):
-    filmName = request.GET.get('filmName')
-    print("filmName is ", filmName)
-    if filmName == None:
+    film_name = request.GET.get('filmName')
+    print("filmName is ", film_name)
+    if not film_name:
         data = {
-            'state':False,
-            'message':"fail to recieve parameter"
+            'state': False,
+            'message': "fail to recieve parameter"
         }
         print(data)
-        return JsonResponse(json.dumps(data),safe=False)
+        return JsonResponse(json.dumps(data), safe=False)
     engine = SearchEngine('statics/config.ini', 'utf-8')
-    flag, id_scores = engine.search(filmName)
+    flag, id_scores = engine.search(film_name)
     if flag == 0:
         data = {
             'state': False,
@@ -81,17 +80,22 @@ def filmNameSearch(request):
 
 
 def find(docid):
+    config = configparser.ConfigParser()
+    config.read('statics/config.ini', 'utf-8')
     docs = []
-    dir_path = 'C:\\Users\\Administrator\\Desktop\\MassData\\Project\\Chihiro\\statics\\movies\\'
     for id in docid:
-        root = ET.parse(dir_path + '%s.xml' % id).getroot()
-        url = root.find('url').text
-        title = root.find('title').text
-        body = root.find('body').text
-        img = root.find('img').text
-        snippet = root.find('body').text[0:120] + '……'
-        doc = {'url': url, 'title': title, 'snippet': snippet, 'body': body,
-               'img': img, 'id': id}
+        with open(config['DEFAULT']['doc_dir_path'] + id + '.json', 'r') as f:
+            root = json.load(f)
+            title = root['title']
+            url = root['url']
+            img = root['img']
+            ename = root['ename']
+            types = root['types']
+            snippet = root['body'][0:120] + '……'
+            directors = root['directors']
+            actors = root['actors']
+        doc = {'title': title, 'url': url, 'img': img, 'ename': ename, 'types': types, 'snippet': snippet,
+               'directors': directors, 'actors': actors}
         docs.append(doc)
     return docs
 

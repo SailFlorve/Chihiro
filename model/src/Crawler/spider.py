@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import configparser
+import json
 import random
 import urllib.request
-import xml.etree.ElementTree as ET
+from multiprocessing import Pool
 
 from bs4 import BeautifulSoup
 
@@ -18,14 +19,19 @@ user_agent_list = [
         'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3)',
         'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; OfficeLiveConnector.1.4; OfficeLivePatch.1.3; yie8)',
         'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; OfficeLiveConnector.1.3; OfficeLivePatch.0.0; Zune 3.0; MS-RTC LM 8)',
-        'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; OfficeLiveConnector.1.3; OfficeLivePatch.0.0; MS-RTC LM 8; Zune 4.0)',
+        'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 61; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; OfficeLiveConnector.1.3; OfficeLivePatch.0.0; MS-RTC LM 8; Zune 4.0)',
         'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; MS-RTC LM 8)',
     ]
 
 
-def crawl_movies(doc_dir_path, doc_encoding):
+def crawl_movies(start):
+    config = configparser.ConfigParser()
+    config.read('statics/config.ini', 'utf-8')
+    doc_dir_path = config['DEFAULT']['doc_dir_path']
+    doc_encoding = config['DEFAULT']['doc_encoding']
     path = 'https://maoyan.com'
-    for i in range(0, 27318):
+    i = start
+    while i < start + 9:
         try:
             headers = {'User-Agent': random.choice(user_agent_list),
                        'Cookie': 'uuid=1A6E888B4A4B29B16FBA1299108DBE9CE4B584628BAA0D9413EC30D0C831E00D;'
@@ -46,16 +52,20 @@ def crawl_movies(doc_dir_path, doc_encoding):
         j = i * 30
         html = response.read().decode('utf-8')
         soup = BeautifulSoup(html, 'lxml')
-        items = soup.find('dl', class_='movie-list').find_all('dd')
+        items = soup.find_all('dd')
+        if len(items) < 1:
+            pass_identify(items)
+            continue
         for item in items:
-            name = item.find('div', class_='channel-detail movie-item-title').get('title')
+            doc = dict()
+            id = j
+            title = item.find('div', class_='channel-detail movie-item-title').get('title')
             url = path + item.find('div', class_='movie-item').find('a').get('href')
             img = item.find('div', class_='movie-poster').find_all('img')[1].get('data-src')
-            doc = ET.Element("doc")
-            ET.SubElement(doc, "id").text = "%d" % j
-            ET.SubElement(doc, "url").text = url
-            ET.SubElement(doc, "title").text = name
-            ET.SubElement(doc, "img").text = img
+            doc['id'] = id
+            doc['title'] = title
+            doc['url'] = url
+            doc['img'] = img
             try:
                 request_detail = urllib.request.Request(url=url, headers=headers)
                 response_detail = urllib.request.urlopen(request_detail)
@@ -64,6 +74,11 @@ def crawl_movies(doc_dir_path, doc_encoding):
                 return
             html_detail = response_detail.read().decode('utf-8')
             soup_detail = BeautifulSoup(html_detail, 'lxml')
+            soup_head = soup_detail.find('div', attrs={'class': "banner"})
+            if not soup_head:
+                pass_identify(soup_detail)
+            ename = soup_head.find('div', class_='ename ellipsis').string
+            types = soup_head.find('li', class_='ellipsis').string
             body = soup_detail.find('span', class_='dra').string
             directors = list()
             for s in soup_detail.find('div', class_='tab-desc tab-content active').find_all('li', class_='celebrity '):
@@ -71,16 +86,39 @@ def crawl_movies(doc_dir_path, doc_encoding):
             actors = list()
             for s in soup_detail.find('div', class_='tab-desc tab-content active').find_all('li', class_='celebrity actor'):
                 actors.append(str(s.find('div', class_='info').find('a').string).strip())
-            ET.SubElement(doc, "body").text = body
-            ET.SubElement(doc, "directors").text = '.'.join(directors)
-            ET.SubElement(doc, "actors").text = '.'.join(actors)
-            tree = ET.ElementTree(doc)
-            tree.write(doc_dir_path + "%d.xml" % j, encoding=doc_encoding, xml_declaration=True)
+            doc['ename'] = ename
+            doc['types'] = types
+            doc['body'] = body
+            doc['directors'] = '.'.join(directors)
+            doc['actors'] = '.'.join(actors)
+            with open(doc_dir_path + str(j) + '.json', 'w', encoding=doc_encoding) as f:
+                json.dump(doc, f)
             print(j)
             j += 1
+        i += 1
+
+
+def pass_identify(soup):
+    pass
+    # url = soup.find('img', attrs={'id': 'captcha'}).get('src')
+    # res = requests.get(url)
+    # f = open('verify.jpg', 'wb')
+    # f.write(res.content)
+    # f.close()
+    # img = Image.open('./verify.jpg')
+    # img.show()
+    # verify_num = input('Enter verify code:')
+    # data = {
+    #     'captcha_code': verify_num,
+    #     'url': '/films?__oceanus_captcha=1',
+    #     'ticket': 'Y2IzMDM2YWYtYTRlNi00ZjNjLTgxNGEtNTIwMjg5MjMxNTllI0FDVElPTiNPQ0VBTlVTX1BSRURJQ0FURV9jYjMwMzZhZi1hNGU2LTRmM2MtODE0YS01MjAyODkyMzE1OWVfY29tLm1vdmllLm15d3d3X2FwcF9WZXJpZnlCbG9ja0FjdGlvbl9SZXEuX2pzb24uZGF0YS5pcF8zNi4xNDkuMTU1LjE4OSNvY2VhbnVz',
+    #     'request_code': '684eb61fa6ec4543914ea75e1b1d9229',
+    #     'contact': ''
+    # }
+    # url2 = 'http://maoyan.com/films?__oceanus_captcha=1'
+    # requests.post(url2, data)
 
 
 if __name__ == '__main__':
-    config = configparser.ConfigParser()
-    config.read('statics/config.ini', 'utf-8')
-    crawl_movies(config['DEFAULT']['doc_dir_path'], config['DEFAULT']['doc_encoding'])
+    pool = Pool()
+    pool.map(crawl_movies, [i*10 for i in range(100)])
