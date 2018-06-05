@@ -2,7 +2,6 @@
 
 import configparser
 import math
-import operator
 
 import jieba
 import pymongo
@@ -26,16 +25,13 @@ class SearchEngine:
         f = open(config['DEFAULT']['stop_words_path'], encoding=config['DEFAULT']['stop_words_encoding'])
         words = f.read()
         self.stop_words = set(words.split('\n'))
-        self.conn = pymongo.MongoClient(config.get('DB', 'host'), int(config.get('DB', 'port')))
-        db_name = config.get('DB', 'DBName')
+        self.conn = pymongo.MongoClient(config['DEFAULT']['host'], int(config['DEFAULT']['port']))
+        db_name = config['DEFAULT']['DBName']
         self.db = self.conn[db_name]
         self.K1 = float(config['DEFAULT']['k1'])
         self.B = float(config['DEFAULT']['b'])
         self.N = int(config['DEFAULT']['n'])
         self.AVG_L = float(config['DEFAULT']['avg_l'])
-
-    def __del__(self):
-        self.conn.close()
 
     @staticmethod
     def is_number(s):
@@ -59,7 +55,7 @@ class SearchEngine:
         return n, cleaned_dict
 
     def fetch_from_db(self, term):
-        return self.db['movie'].find(term)
+        return self.db['movie'].find({'key': term})
 
     def result_by_BM25(self, sentence):
         seg_list = jieba.lcut(sentence, cut_all=False)
@@ -67,20 +63,18 @@ class SearchEngine:
         BM25_scores = {}
         for term in cleaned_dict.keys():
             r = self.fetch_from_db(term)
-            if r is None:
-                continue
-            df = r['df']
-            w = math.log2((self.N - df + 0.5) / (df + 0.5))
-            doc = r['doc']
-            tf = doc['tf']
-            ld = doc['ld']
-            docid = doc['doc_id']
-            s = (self.K1 * tf * w) / (tf + self.K1 * (1 - self.B + self.B * ld / self.AVG_L))
-            if docid in BM25_scores:
-                BM25_scores[docid] = BM25_scores[docid] + s
-            else:
-                BM25_scores[docid] = s
-        BM25_scores = sorted(BM25_scores.items(), key=operator.itemgetter(1))
+            for result in r:
+                df = result['df']
+                tf = result['tf']
+                ld = result['ld']
+                w = math.log2((self.N - df + 0.5) / (df + 0.5))
+                docs = result['docs']
+                s = (self.K1 * tf * w) / (tf + self.K1 * (1 - self.B + self.B * ld / self.AVG_L))
+                if term in BM25_scores:
+                    BM25_scores[term]['score'] += s
+                else:
+                    BM25_scores[term] = {'score': s, 'docs': docs}
+        BM25_scores = sorted(BM25_scores.items(), key=lambda x: x[1]['score'])
         BM25_scores.reverse()
         if len(BM25_scores) == 0:
             return 0, []
@@ -105,3 +99,4 @@ class SearchEngine:
 
 if __name__ == "__main__":
     se = SearchEngine('statics/config.ini', 'utf-8')
+

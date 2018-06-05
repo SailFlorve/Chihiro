@@ -27,7 +27,7 @@ class Doc:
 
 class IndexModule:
     stop_words = set()
-    postings_lists = {}
+    postings_lists = list()
 
     config_path = ''
     config_encoding = ''
@@ -70,7 +70,8 @@ class IndexModule:
         connection = pymongo.MongoClient(config['DEFAULT']['host'], int(config['DEFAULT']['port']))
         db_name = config['DEFAULT']['DBName']
         db = connection[db_name]
-        db['movie'].insert(self.postings_lists, check_keys=False)
+        for posting in self.postings_lists:
+            db['movie'].insert(posting, check_keys=False)
 
     def construct_postings_lists(self):
         config = configparser.ConfigParser()
@@ -95,16 +96,15 @@ class IndexModule:
                 ld, cleaned_dict = self.clean_list(seg_list)
                 avg_l = avg_l + ld
                 for key, value in cleaned_dict.items():
-                    d = dict()
-                    d['doc_id'] = doc_id
-                    d['tf'] = value
-                    d['ld'] = ld
-                    if key in self.postings_lists:
-                        self.postings_lists[key]['df'] += 1
-                    else:
-                        self.postings_lists[key] = {}
-                        self.postings_lists[key]['df'] = 1
-                    self.postings_lists[key]['doc'] = d
+                    d = {'title': title, 'ename': ename, 'types': types, 'body': body, 'directors': directors,
+                         'actors': actors}
+                    for posting in self.postings_lists:
+                        if posting['key'] == key:
+                            posting['docs'] = {str(doc_id): d}
+                            posting['df'] = posting['df'] + 1
+                            continue
+                    p = {'key': key, 'df': 1, 'tf': value, 'ld': ld, 'docs': {str(doc_id): d}}
+                    self.postings_lists.append(p)
         avg_l = avg_l / len(files)
         config.set('DEFAULT', 'N', str(len(files)))
         config.set('DEFAULT', 'avg_l', str(avg_l))

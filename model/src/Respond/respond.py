@@ -37,15 +37,15 @@ def toActorNameSearch(request):
 
 @csrf_exempt
 def test(request):
-    softData = request.POST.get('softData')
-    print("softData is ", softData)
+    soft_data = request.POST.get('softData')
+    print("softData is ", soft_data)
 
     #jsonData 是一个字典（dict类型的变量）
-    jsonData = {
-        'message': "testdata",
+    json_data = {
+        'message': "test_data",
         'data': "杭电",
     }
-    return JsonResponse(json.dumps(jsonData), safe=False)
+    return JsonResponse(json.dumps(json_data), safe=False)
 
 
 @csrf_exempt
@@ -55,12 +55,12 @@ def filmNameSearch(request):
     if not film_name:
         data = {
             'state': False,
-            'message': "fail to recieve parameter"
+            'message': "fail to receive parameter"
         }
         print(data)
         return JsonResponse(json.dumps(data), safe=False)
     engine = SearchEngine('statics/config.ini', 'utf-8')
-    flag, id_scores = engine.search(film_name)
+    flag, results = engine.search(film_name)
     if flag == 0:
         data = {
             'state': False,
@@ -69,8 +69,7 @@ def filmNameSearch(request):
         print(data)
         return JsonResponse(json.dumps(data), safe=False)
     else:
-        doc_ids = [i for i, s in id_scores]
-        docs = find(doc_ids)
+        docs = get_doc(results)
         data = {
             'state': True,
             'data': docs
@@ -79,24 +78,12 @@ def filmNameSearch(request):
         return JsonResponse(json.dumps(data), safe=False)
 
 
-def find(docid):
-    config = configparser.ConfigParser()
-    config.read('statics/config.ini', 'utf-8')
-    docs = []
-    for id in docid:
-        with open(config['DEFAULT']['doc_dir_path'] + id + '.json', 'r') as f:
-            root = json.load(f)
-            title = root['title']
-            url = root['url']
-            img = root['img']
-            ename = root['ename']
-            types = root['types']
-            snippet = root['body'][0:120] + '……'
-            directors = root['directors']
-            actors = root['actors']
-        doc = {'title': title, 'url': url, 'img': img, 'ename': ename, 'types': types, 'snippet': snippet,
-               'directors': directors, 'actors': actors}
-        docs.append(doc)
+def get_doc(search_results):
+    docs = list()
+    for result in search_results:
+        for id, doc in result[1]['docs']:
+            doc['body'] = doc['body'][0:120] + '……'
+            docs.append(doc)
     return docs
 
 
