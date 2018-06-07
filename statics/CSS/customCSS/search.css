@@ -1,14 +1,4 @@
-body
-{
-    background-color:#E8FFF5;
-}
-.searchtype
-{
-    margin-top: 20px;
-    margin-left: 50px;
-    width: 200px;
-    height: 30px;
-}
+
 #filmnameSearch
 {
     color:#333;
@@ -56,6 +46,8 @@ body
     border-right-style:solid;
     border-bottom-style:solid;
     border-left-style:solid;
+    
+    width: 300px;
 }
 #filmnameSearch:focus
 {
@@ -65,48 +57,133 @@ body
      box-shadow: 0px 0px 5px #007eff;   
     
 }
-.clickbutton
+#c
 {
-    position: relative;
-    top: -27px;
-    left: 250px;
+    font-size: 40px;
+    font-weight: 500;
+    color: #90AEFF;
 }
-.showPartType
-{
-    position: absolute;
-    right: 100px;
-    top: 20px;
-    width: 500px;
-    height: 600px;
-    border: 1px solid #A0A0A0;
-    border-radius: 8px;
-}
-.pictureType
-{
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    width: 270px;
-    height: 385px;  
-}
-.informationType
-{
-    position: absolute;
-    left: 20px;
-    top: -15px;
-    width: 170px;
-    height: 500px;
-}
-.directorname
+#h
 {
     font-size: 25px;
-    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    color: #ce2525;
 }
-.searchInformationPartType
+#i
+{
+    font-size: 25px;
+    font-weight: 500;
+    color: #f9e75e;
+}
+#sh
+{
+    font-size: 35px;
+    font-weight: 500;
+    color: #74dac6;
+}
+#si
+{
+    font-size: 25px;
+    font-weight: 500;
+    color: #7dc383;
+}
+#r
+{
+    font-size: 25px;
+    font-weight: 500;
+    color: #ff5f5f;
+}
+#o
+{
+    font-size: 25px;
+    font-weight: 500;
+    color: #74dac6;
+}
+.logo
+{
+    position: relative;
+    left: 10px;
+    top: 3px;
+}
+.container
+{
+    position: relative;
+    left: 150px;
+    top: -35px;
+}
+.clickbutton
 {
     position: absolute;
-    left: 50px;
-    top: 120px;
-    width: 530px;
-    height: 500px;
+    top: 24px;
+    left: 500px;
+
+}
+.spanlable
+{
+    float: left;
+    display: inline-block;
+    width: 4px;
+    height: 23px;
+    margin-right: 6px;
+    background-color: #ef4238;
+}
+
+.showpart
+{
+    position: absolute;;
+    width: 1000px;
+    height: auto;
+    left: 150px;
+    border: 2px solid #a7efe9;
+    border-left: none;
+    border-right: none;
+}
+.headtype
+{
+    width: 900px;
+    height: 250px;
+}
+.headright
+{
+    width: 160px;
+    height: 220px;
+    margin-left: 30px;
+    margin-top: 20px;
+
+}
+.headleft
+{
+    width: 300px;
+    height: 220px;
+    float: right;
+    margin-right: 360px;
+    margin-top: -30px;
+
+}
+.a
+{
+    margin-left: 10px;
+    color: #616161;
+}
+.b
+{
+    margin-left: 10px;
+    color: #616161;
+}
+h3
+{
+    font-size: 32px;
+    font-weight: 600;
+    color: #33354a;
+}
+
+.ename
+{
+    margin-top: -10px;
+    color: #658525;
+    font-size: 20px;
+}
+.types
+{
+    color: #00818a;
 }

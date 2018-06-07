@@ -9,32 +9,41 @@
 		<link rel="stylesheet" type="text/css" href="../statics/CSS/externalCSS/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../statics/CSS/externalCSS/animate.css"/>
 		<link rel="stylesheet" type="text/css" href="../statics/CSS/customCSS/categoryChoose.css"/>
+		<link rel="stylesheet" type="text/css" href="../statics/CSS/externalCSS/buttons.css"/>
 		<!--自定义css-->
 		<link rel="stylesheet" type="text/css" href="../statics/CSS/customCSS/first-page.css"/>
 
 	</head>
 	
 	<body>
-		<section class="container">
-			<div id="rowContainer" align="center">
-				<div id="diseaseDiv" class="myCol1 animated flipInY" onclick="handleClick1();">
-					<div id="disease" class="message">片名搜索</div>
-				</div>
-				
-				<div id="weatherDiv" class="myCol2 animated flipInY" onclick="handleClick2();">
-					<div id="weather" class="message">导演搜索</div>
-				</div>
-				
-				<div id="stationDiv" class="myCol3 animated flipInY" onclick="handleClick3();">
-					<div id="station" class="message">演员搜索</div>
-				</div>
+		<section>
+			<div class="logo">
+				<span id="c">C</span>
+				<span id="h">h</span>
+				<span id="i">i</span>
+				<span id="sh">H</span>
+				<span id="si">i</span>
+				<span id="r">r</span>
+				<span id="o">o</span>
 			</div>
+		</section>
+	
+		<section class="container">
+			<form>
+				<input id="filmnameSearch" type="text" name="filename"  autocomplete="off" />	
+			</form>
+		</section>
+
+		<section class="clickbutton">
+			<button id="research" type="submit" class="button button-rounded button-small button-glow button-rounded button-raised button-primary">查询</button>
 		</section>
 
 
+		<!-- 自定义js -->
+		<script type="text/javascript" src="../statics/JS/customJS/first-page.js"></script>
 		<!--引用js-->
-		<script type="text/javascript" src="../statics/JS/externalJS/jquery-3.2.1.js"></script>
-		<script type="text/javascript" src="../statics/JS/customJS/categoryChoose.js"></script>
+		<script type="text/javascript" src="../statics/JS/externalJS/jquery.min.js"></script>
+		<script type="text/javascript" src="../statics/JS/externalJS/jquery-3.3.1.js"></script>
 		
 	</body>
 </html>

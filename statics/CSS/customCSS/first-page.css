@@ -1,4 +1,120 @@
-body 
+
+#filmnameSearch
 {
-    background-color: #cfd1d5;
+    color:#333;
+    line-height:normal;
+    font-family:"Microsoft YaHei",Tahoma,Verdana,SimSun;
+    font-style:normal;
+    font-variant:normal;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-weight:normal;
+    margin-top:0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    padding-top:4px;
+    padding-right:4px;
+    padding-bottom:4px;
+    padding-left:4px;
+    font-size:15px;
+    outline-width:medium;
+    outline-style:none;
+    outline-color:invert;
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    border-bottom-left-radius:3px;
+    border-bottom-right-radius:3px;
+    text-shadow:0px 1px 2px #fff;
+    background-attachment:scroll;
+    background-repeat:repeat-x;
+    background-position-x:left;
+    background-position-y:top;
+    background-size:auto;
+    background-origin:padding-box;
+    background-clip:border-box;
+    background-color:rgb(255,255,255);
+    margin-right:8px;
+    border-top-color:#ccc;
+    border-right-color:#ccc;
+    border-bottom-color:#ccc;
+    border-left-color:#ccc;
+    border-top-width:1px;
+    border-right-width:1px;
+    border-bottom-width:1px;
+    border-left-width:1px;
+    border-top-style:solid;
+    border-right-style:solid;
+    border-bottom-style:solid;
+    border-left-style:solid;
+
+    width: 500px;
+    position: relative;
+    top: 170px;
+    left: 23%;
+}
+#filmnameSearch:focus
+{
+    border: 1px solid #fafafa;
+    -webkit-box-shadow: 0px 0px 6px #007eff;
+     -moz-box-shadow: 0px 0px 5px #007eff;
+     box-shadow: 0px 0px 5px #007eff;   
+    
+}
+.logo
+{
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    top: 170px;
+    left: 530px;
+}
+#c
+{
+    font-size: 100px;
+    font-weight: 200;
+    color: #90AEFF;
+}
+#h
+{
+    font-size: 70px;
+    font-weight: 200;
+    color: #ce2525;
+}
+#i
+{
+    font-size: 70px;
+    font-weight: 200;
+    color: #f9e75e;
+}
+#sh
+{
+    font-size: 90px;
+    font-weight: 200;
+    color: #74dac6;
+}
+#si
+{
+    font-size: 70px;
+    font-weight: 200;
+    color: #7dc383;
+}
+#r
+{
+    font-size: 70px;
+    font-weight: 200;
+    color: #ff5f5f;
+}
+#o
+{
+    font-size: 70px;
+    font-weight: 200;
+    color: #74dac6;
+}
+
+.clickbutton
+{
+    position: absolute;
+    top: 297px;
+    left: 960px;
 }

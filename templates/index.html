@@ -14,57 +14,19 @@
 		<link rel="stylesheet" type="text/css" href="../statics/CSS/externalCSS/font-awesome.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../statics/CSS/externalCSS/animate.css" />
 		<link rel="stylesheet" type="text/css" href="../statics/CSS/externalCSS/style.css" />
-		<!--自定义css-->
+		<!--自定义cs	s-->
 		<link rel="stylesheet" type="text/css" href="../statics/CSS/customCSS/index.css"/>
 		
 	</head>
 	
 	<body class="fixed-sidebar full-height-layout gray-bg skin-1 mini-navbar" style="overflow: hidden;"  >
 		<header class="cd-main-header animate-search">
-			<a class="navbar-minimalize minimalize-styl-2 btn btn-primary my-small-navbar" th:href="@{#}">
-				<i class="fa fa-bars my-fa-bar"></i>
-			</a>
 			<nav class="cd-main-nav-wrapper">
 				<div class="myTitle" align="center">千寻影片搜索系统</div>
 			</nav>
 		</header>
 		
-		<section id="wrapper">
-			<!--左侧导航开始-->
-			<nav class="navbar-default navbar-static-side" role="navigation">
-				<div class="nav-close">
-					<i class="fa fa-times-circle"></i>
-				</div>
-				
-				<div class="sidebar-collapse">
-					<ul id="side-menu" class="nav">
-						<li>
-							<a href="../templates/films-search.html" class="J_menuItem">
-								<i class="fa fa fa-fire"></i>
-								<span class="nav-label">片名搜索</span>
-							</a>
-						</li>
-						
-						<li>
-							<a href="../templates/analyzeSexChart.html" th:href="@{/home/analyzeSexChart}" class="J_menuItem">
-								<i class="fa fa fa-bar-chart"></i>
-								<span class="nav-label">导演搜索</span>
-							</a>
-						</li>
-						
-						<li>
-							<a th:href="@{#}">
-								<i class="fa fa fa-area-chart"></i>
-								<span class="nav-label">演员搜索</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
-			
-			<!--左侧导航结束-->
-			<!--右侧导航开始-->
-			<section id="page-wrapper" class="gray-bg dashbard-1">
+
 				<div class="row content-tabs">
 					<button class="roll-nav roll-left J_tabLeft">
 						<i class="fa fa-backward"></i>
@@ -102,16 +64,12 @@
 							</li>
 						</ul>
 					</div>
-				
-					<a th:href="@{/user/loginView}" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-in">登录</i></a>
 				</div>
 			
 				<div id="content-main" class="row J_mainContent">
 					<iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="../templates/first-page.html" frameborder="0" data-id = "first-page.html" seamless="seamless"></iframe>
 				</div>
-			</section>
-			
-		</section>
+
 		
 		<!--全局js-->
 		<script type="text/javascript" src="../statics/JS/externalJS/jquery.min.js"></script>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+ <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+ <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+ <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+ <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>搜索结果</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 引用css -->
+        <link rel="stylesheet" type="text/css" href="../statics/CSS/externalCSS/buttons.css"/>
+        <!-- 自定义css -->
+        <link rel="stylesheet" type="text/css" href="../statics/CSS/customCSS/search.css" />
+     </head>
+     <body>
+         <!--[if lt IE 7]>
+             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+         <![endif]-->
+        <section id="searchheader">
+            <div class="logo">
+                <span id="c">C</span>
+                <span id="h">h</span>
+                <span id="i">i</span>
+                <span id="sh">H</span>
+                <span id="si">i</span>
+                <span id="r">r</span>
+                <span id="o">o</span>
+            </div>
+            <div class="container">
+                <form>
+                    <input id="filmnameSearch" type="text" name="filename"  autocomplete="off" />	
+                </form>
+            </div>
+    
+            <div class="clickbutton">
+                <button id="research" type="submit" class="button button-glow button-border button-rounded button-primary button-small  ">查询</button>
+            </div>
+        </section> 
+         
+        <section id="showfilmpart">
+            <section id="successshow">
+                <!-- <div class="showpart">
+                    <div class="headtype">
+                        <div class="headleft">
+                            <a id="filmurl" style="text-decoration:none"><h3 id="title"></h3></a>
+                            <p id="ename" class="ename"></p>
+                            <p id="types" class="types"></p>    
+                        </div>                
+                        <div class="headright">
+                            <img id="filmpicture" />
+                        </div>
+                    </div>
+
+                    <div class="bottombody">
+                        <div class="bodytop">
+                            <span class="spanlable"></span>
+                            <p>剧情简介</p>
+                            <p id="introduction" class="a"></p>
+                        </div>
+                        <div class="bodybottom">
+                            <span class="spanlable"></span>
+                            <p>演职人员</p>
+                            <div class="b">
+                                <p>导演：<span id="director"></span></p>
+                                <p>主演：<span id="actor"></span></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div> -->
+            </section>
+
+            <section id="faild" style="display: none">
+                <p>抱歉！未查询到您查找的内容，请确认后再试！</p>
+            </section>
+
+        </section>
+         
+         <!-- 引用js -->
+         <script type="text/javascript" src="../statics/JS/externalJS/jquery.min.js"></script>
+         <script type="text/javascript" src="../statics/JS/externalJS/jquery-3.2.1.js"></script>
+         <!-- 自定义js -->
+         <script type="text/javascript" src="../statics/JS/customJS/search.js"></script>
+     </body>
+ </html>
