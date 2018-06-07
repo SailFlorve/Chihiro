@@ -85,25 +85,23 @@ class IndexModule:
                 title = root['title']
                 ename = root['ename']
                 types = root['types']
-                body = root['body']
+                img = root['img']
+                body = root['body'][0:120] + '...'
                 directors = root['directors']
                 actors = root['actors']
-                seg_list = jieba.lcut(title + '.' + body, cut_all=False)
-                seg_list.append(ename)
-                seg_list.append(types)
-                seg_list.append(directors)
-                seg_list.append(actors)
+                seg_list = jieba.lcut(title + '.' + body + '.' + ename + '.' + types + '.' + directors + '.' + actors,
+                                      cut_all=False)
                 ld, cleaned_dict = self.clean_list(seg_list)
                 avg_l = avg_l + ld
                 for key, value in cleaned_dict.items():
-                    d = {'title': title, 'ename': ename, 'types': types, 'body': body, 'directors': directors,
-                         'actors': actors}
+                    d = {'id': doc_id, 'title': title, 'ename': ename, 'types': types, 'img': img,
+                         'body': body, 'directors': directors, 'actors': actors}
                     for posting in self.postings_lists:
                         if posting['key'] == key:
-                            posting['docs'] = {str(doc_id): d}
+                            posting['docs'] = d
                             posting['df'] = posting['df'] + 1
                             continue
-                    p = {'key': key, 'df': 1, 'tf': value, 'ld': ld, 'docs': {str(doc_id): d}}
+                    p = {'key': key, 'df': 1, 'tf': value, 'ld': ld, 'docs': d}
                     self.postings_lists.append(p)
         avg_l = avg_l / len(files)
         config.set('DEFAULT', 'N', str(len(files)))

@@ -81,8 +81,7 @@ def filmNameSearch(request):
 def get_doc(search_results):
     docs = list()
     for result in search_results:
-        for id, doc in result[1]['docs']:
-            doc['body'] = doc['body'][0:120] + '……'
+        for doc in result[1]['docs']:
             docs.append(doc)
     return docs
 

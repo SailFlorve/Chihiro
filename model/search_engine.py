@@ -99,4 +99,5 @@ class SearchEngine:
 
 if __name__ == "__main__":
     se = SearchEngine('statics/config.ini', 'utf-8')
-
+    a, b = se.search('war')
+    print(b)
