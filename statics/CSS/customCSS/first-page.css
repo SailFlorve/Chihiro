@@ -48,8 +48,8 @@
     border-left-style:solid;
 
     width: 500px;
-    position: relative;
-    top: 170px;
+    position: absolute;
+    top: 140px;
     left: 23%;
 }
 #filmnameSearch:focus
@@ -66,7 +66,7 @@
     width: 300px;
     height: 200px;
     text-align: center;
-    top: 170px;
+    top: 130px;
     left: 530px;
 }
 #c
@@ -115,6 +115,6 @@
 .clickbutton
 {
     position: absolute;
-    top: 297px;
-    left: 960px;
+    top: 320px;
+    left: 940px;
 }

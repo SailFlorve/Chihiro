@@ -1,5 +1,8 @@
 var searchvalue;
 
+searchvalue = $.cookie('svalue');
+getshowdata(searchvalue);
+
 
 // $("#successshow").append("<div class='showpart'></div>");
 // $(".showpart").append("<div class='headtype'></div>");
@@ -28,8 +31,10 @@ var searchvalue;
 // $("#introduction").text("来自2018年谷小焦（佟丽娅 饰）与1999年陆鸣（雷佳音 饰），两人时空重叠意外住在同一个房间。从互相嫌弃到试图“共谋大业”，阴差阳错发生了一系列好笑的事情。乐在其中的两人并不知道操控这一切的神秘人竟是想要去2037年“投机取巧”的2018年的……")
 // $("#director").text("苏伦");
 // $("#actor").text("雷佳音/佟丽娅/徐峥");
+// $("#successshow").show();
 
 $("#research").click(function(){
+    $("#successshow").empty();
     searchvalue = $("#filmnameSearch").val();
     getshowdata(searchvalue);
 })

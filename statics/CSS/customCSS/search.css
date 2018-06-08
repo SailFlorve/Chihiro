@@ -108,14 +108,14 @@
 .container
 {
     position: relative;
-    left: 150px;
-    top: -35px;
+    left: 170px;
+    top: -32px;
 }
 .clickbutton
 {
     position: absolute;
-    top: 24px;
-    left: 500px;
+    top: 27px;
+    left: 510px;
 
 }
 .spanlable
