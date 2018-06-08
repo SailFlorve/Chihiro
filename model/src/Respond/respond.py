@@ -7,37 +7,19 @@ from django.views.decorators.csrf import csrf_exempt
 from model.index_module import *
 from model.search_engine import *
 
-
-def hello(request):
-    context = {}
-    context['hello'] = 'Hello World!!!'
-    return render(request, 'hello.html', context)
-
-
 def welcome(request):
     context = {}
     #buildDB()
-    return render(request, 'first-page.html', context)
+    return render(request, 'search.html', context)
 
-
-def toFilmNameSearch(request):
+def toSearch(request):
     context = {}
-    return render(request,'films-search.html', context)
-
-
-def toDirectorNameSearch(request):
-    context = {}
-    return render(request,'director-search.html', context)
-
-
-def toActorNameSearch(request):
-    context = {}
-    return render(request, 'actor-search.html', context)
-
+    #buildDB()
+    return render(request, 'search.html', context)
 
 @csrf_exempt
 def test(request):
-    soft_data = request.POST.get('softData')
+    soft_data = request.GET.get('softData')
     print("softData is ", soft_data)
 
     #jsonData 是一个字典（dict类型的变量）
@@ -49,7 +31,7 @@ def test(request):
 
 
 @csrf_exempt
-def filmNameSearch(request):
+def Search(request):
     film_name = request.GET.get('filmName')
     print("filmName is ", film_name)
     if not film_name:
@@ -69,20 +51,23 @@ def filmNameSearch(request):
         print(data)
         return JsonResponse(json.dumps(data), safe=False)
     else:
+        print("to get_doc()")
         docs = get_doc(results)
+        print("get docs")
         data = {
             'state': True,
             'data': docs
         }
         print(data)
-        return JsonResponse(json.dumps(data), safe=False)
+        return JsonResponse(json.dumps(data), safe=False,content_type="application/json")
 
 
 def get_doc(search_results):
     docs = list()
     for result in search_results:
-        for doc in result[1]['docs']:
-            docs.append(doc)
+        doc = result[1]['docs']
+        #print("doc is ",doc)
+        docs.append(doc)
     return docs
 
 

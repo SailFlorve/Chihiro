@@ -18,11 +18,8 @@ from django.conf.urls import url
 from model.src.Respond import respond
 
 urlpatterns = [
-    url(r'^hello$', respond.hello),
     url(r'^$', respond.welcome),
+    url(r'^search.html$',respond.toSearch),
     url(r'^test$', respond.test),
-    url(r'^fieldNameDownloadable.do/Disease$', respond.toFilmNameSearch),
-    url(r'^fieldNameDownloadable.do/Weather$', respond.toDirectorNameSearch),
-    url(r'^fieldNameDownloadable.do/Station$', respond.toActorNameSearch),
-    url(r'^filmNameSearch$', respond.filmNameSearch)
+    url(r'^Search.php$', respond.Search)
 ]
