@@ -130,7 +130,7 @@
 
 .showpart
 {
-    position: absolute;;
+    position: relative;
     width: 1000px;
     height: auto;
     left: 150px;
@@ -153,10 +153,10 @@
 }
 .headleft
 {
-    width: 300px;
+    width: 450px;
     height: 220px;
     float: right;
-    margin-right: 360px;
+    margin-right: 210px;
     margin-top: -30px;
 
 }
